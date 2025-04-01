@@ -105,11 +105,29 @@ def write_name(page: _Cell, paragraph_index: int, person: Person):
     )
 
 
+def write_national_register_number(
+    page: _Cell, paragraph_index: int, national_register_number: str
+):
+    # National Register Number
+    page.paragraphs[paragraph_index].clear()
+    set_label_font_of_run(
+        page.paragraphs[paragraph_index].add_run(
+            "Identificatienummer van het Rijksregister of, in voorkomend geval, het identificatienummer van de KSZ: "
+        )
+    )
+    set_written_font_of_run(
+        page.paragraphs[paragraph_index].add_run(national_register_number)
+    )
+
+
 def write_parent(page: _Cell, parent: Person):
     # Write information about the parent to Tax Certificate (Word)
 
-    # Ful name
+    # Full name
     write_name(page, 6, parent)
+
+    # National Register Number
+    write_national_register_number(page, 8, parent.national_register_number)
 
     # Address
     write_address(page, 9, parent.address)
@@ -118,8 +136,11 @@ def write_parent(page: _Cell, parent: Person):
 def write_member(page: _Cell, member: Member):
     # Write information about the member to Tax Certificate (Word)
 
-    # Ful name
+    # Full name
     write_name(page, 14, member)
+
+    # National Register Number
+    write_national_register_number(page, 16, member.national_register_number)
 
     # Date of birth
     page.paragraphs[17].runs[0].text = "Geboortedatum: "

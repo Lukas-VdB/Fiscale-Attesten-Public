@@ -24,6 +24,7 @@ class Agency:
 class Person:
     last_name: str
     first_name: str
+    national_register_number: str
     address: Address
 
     @property
