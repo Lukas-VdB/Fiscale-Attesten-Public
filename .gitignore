@@ -1,9 +1,7 @@
 # CUSTOM
 *.xlsx
 *.csv
-*.docx
 *.pdf
-*.json
 user_config.json
 attesten/
 verzonden-attesten/
