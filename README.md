@@ -9,37 +9,12 @@ This scheme defines the order of operations for the code
 
 ## B. Preprocess spreadsheet information and API setup
 
-### I. Create dictionary with activity data *(Weekenddata)*
-1. Check if Workbook with spreadsheets exists
-2. Load spreadsheet *Weekenddata*
-3. Create dictionary with:
-    - For each age group (tak):
-        - All activities and for each activity:
-            - start date
-            - end date
-            - price
-4. Delete spreadsheet from memory to save resources:
-    - "del"
-    - "workbook.close()"
-    - "gc.colect()"
-
-### II. Generate dictionary with age group data
-1. Read user config file
-2. Calculate first year for each age group
-3. Generate dictionary
-
-### III. Load Spreadsheet with presence data *(Aanwezigheden)*
-1. Load and cache spreadsheet
-2. Check column and row headers 
-    - Read column and row headers 
-    - Save in config file
-    - Save as dictionary
-3. Read and create list of all names in spreadsheet *Aanwezigheden*
-
-### IV. Establish connection with Groepsadmin API
+### I. Establish connection with Groepsadmin API
 1. Create login request
 2. Let user login
 3. Store access token and header
+
+### II. Get all member and activity data from Groepsadmin API
 
 ## C. Generate Tax Certificate for every member
 
@@ -83,3 +58,43 @@ This scheme defines the order of operations for the code
 4. Write activity data
 5. Write signatue
 6. Save and convert to pdf file
+
+
+# Information Scheme
+This scheme defines where the application gets its information from
+
+## Groepsadmin API
+#### For each member:
+- full name
+- national register number
+- address
+    - street
+    - streetnumber
+    - zipcode
+    - city
+- date of birth
+- alternative year
+- scouting op maat (yes/no)
+- contactperson 1:
+    - full name
+    - national register number
+    - address
+- contactperson 2:
+    - full name
+    - national register number
+    - address
+
+## User config file
+#### Info about the youth movement:
+- name
+- kbo number
+- address
+#### Info about the certification agency:
+- name
+- kbo number
+- address
+#### Signature from the representative of the youth movement:
+- place (city)
+- full name
+- role (within the organisation)
+#### Calender year

@@ -95,7 +95,10 @@ def generate_tax_certificates():
         calendar_year = user_config["organisation"]["calendar_year"]
 
         # B. Get presence data from Groepsadmin API
-        # TODO get call to API
+        ### I. Establish connection with Groepsadmin API
+        # TODO
+
+        ### II. Get all member and activity data from Groepsadmin API
         presence_data_array = [
             {
                 "member": test_data.member,
